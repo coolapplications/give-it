@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import { useStyles } from './Search.styles';
+import { useStyles } from './SearchBar.styles';
+import { apiRequest } from '../../apiService';
+import { useDispatch } from 'react-redux';
 
-export default function Search() {
+function SearchBar() {
+  const [newText, onChangeText] = useState('');
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   return (
     <div className={classes.root}>
@@ -29,6 +33,17 @@ export default function Search() {
             </div>
             <InputBase
               placeholder='Search…'
+              onChange={event => {
+                const newText = event.target.value;
+                onChangeText(newText);
+              }}
+              onKeyPress={event => {
+                if (event.key === 'Enter' && newText) {
+                  onChangeText(newText);
+
+                  apiRequest(newText)(dispatch);
+                }
+              }}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -41,3 +56,4 @@ export default function Search() {
     </div>
   );
 }
+export default SearchBar;
