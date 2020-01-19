@@ -6,6 +6,7 @@ import {
   fetchResultsPendingAction,
   fetchResultsSuccessAction
 } from '../types/findResultsTypes';
+import IProduct from '../../models/ProductModel';
 
 export function fetchResultsPending(): fetchResultsPendingAction {
   return {
@@ -13,7 +14,9 @@ export function fetchResultsPending(): fetchResultsPendingAction {
   };
 }
 
-export function fetchResultsSuccess(data: any): fetchResultsSuccessAction {
+export function fetchResultsSuccess(
+  data: IProduct[]
+): fetchResultsSuccessAction {
   return {
     type: FETCH_RESULTS_SUCCESS,
     results: data

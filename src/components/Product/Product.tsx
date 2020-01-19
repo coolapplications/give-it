@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useStyles } from './Product.styles';
 
@@ -9,35 +9,52 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import IProduct from '../../models/ProductModel';
+import ISeller from '../../models/SellerModel';
+import { apiSellerOnly } from '../../apiService';
 
-export default function Product() {
+export default function Product(props: { product: IProduct }) {
   const classes = useStyles();
-
+  const [seller, setSeller] = useState({} as ISeller);
+  useEffect(() => {
+    apiSellerOnly(props.product.seller.id)
+      .then(res => res.json())
+      .then(res => {
+        if (res.seller) {
+          setSeller(res.seller);
+        }
+      });
+  });
   return (
-    <div className={classes.container}>
-      <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image='/static/images/cards/contemplative-reptile.jpg'
-            title='Contemplative Reptile'
-          />
-          <CardContent>
-            <Typography gutterBottom variant='h5' component='h2'>
-              Lizard
-            </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size='large' color='primary'>
-            Agregar a la lista
-          </Button>
-        </CardActions>
-      </Card>
-    </div>
+    <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={props.product.thumbnail}
+          title='Contemplative Reptile'
+        />
+        <CardContent>
+          <Typography gutterBottom variant='h5' component='h2'>
+            {props.product.title}
+          </Typography>
+          <Typography variant='body2' color='textSecondary' component='p'>
+            {props.product.price}
+          </Typography>
+          <Typography variant='body2' color='textSecondary' component='p'>
+            {seller.nickname}
+          </Typography>
+          <Typography
+            variant='body2'
+            color='textSecondary'
+            component='p'
+          ></Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size='large' color='primary'>
+          Añadir a mi lista de regalos
+        </Button>
+      </CardActions>
+    </Card>
   );
 }

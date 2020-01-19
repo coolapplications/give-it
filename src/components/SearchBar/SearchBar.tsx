@@ -40,8 +40,7 @@ function SearchBar() {
               onKeyPress={event => {
                 if (event.key === 'Enter' && newText) {
                   onChangeText(newText);
-
-                  apiRequest(newText)(dispatch);
+                  dispatch(apiRequest(newText));
                 }
               }}
               classes={{

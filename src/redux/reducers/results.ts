@@ -4,23 +4,31 @@ import {
   FETCH_RESULTS_ERROR,
   fetchResultsActionTypes
 } from '../types/findResultsTypes';
-const defaultState = {
+import IProduct from '../../models/ProductModel';
+
+interface IResults {
+  pending: boolean;
+  result?: IProduct[] | null;
+  error?: any;
+}
+
+const defaultState: IResults = {
   pending: false,
   result: null,
   error: null
 };
 
 function reducerResults(
-  state: typeof defaultState = defaultState,
+  state: IResults = defaultState,
   action: fetchResultsActionTypes
-) {
+): IResults {
   switch (action.type) {
     case FETCH_RESULTS_PENDING: {
       return { ...state, pending: true };
     }
 
     case FETCH_RESULTS_SUCCESS: {
-      return { ...state, pending: false, results: action.results };
+      return { ...state, pending: false, result: action.results };
     }
 
     case FETCH_RESULTS_ERROR: {

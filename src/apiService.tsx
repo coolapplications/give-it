@@ -5,6 +5,7 @@ import {
   fetchResultsPending
 } from './redux/actions/findResults';
 import { Dispatch } from 'redux';
+import IProduct from './models/ProductModel';
 
 export function apiRequest(text: string) {
   return (dispatch: Dispatch) => {
@@ -15,11 +16,14 @@ export function apiRequest(text: string) {
         if (res.error) {
           throw res.error;
         }
-        dispatch(fetchResultsSuccess(res.results));
+
+        dispatch(fetchResultsSuccess(res.results as IProduct[]));
       })
       .catch(error => {
         dispatch(fetchResultsError(error));
       });
-    console.log(text);
   };
+}
+export function apiSellerOnly(id: number) {
+  return fetch(`${url}search?seller_id=${id}`);
 }
