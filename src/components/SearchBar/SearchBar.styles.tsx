@@ -8,18 +8,11 @@ import {
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1
+      justifyItems: 'center'
     },
-    menuButton: {
-      marginRight: theme.spacing(2)
-    },
-    title: {
-      flexGrow: 1,
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block'
-      }
-    },
+    toolbar: { justifyContent: 'space-between' },
+    title: { padding: '0 20px', color: 'black' },
+
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
@@ -43,6 +36,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       justifyContent: 'center'
     },
+
     inputRoot: {
       color: 'inherit'
     },

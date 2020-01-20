@@ -15,6 +15,9 @@ import { apiSellerOnly } from '../../apiService';
 
 export default function Product(props: { product: IProduct }) {
   const classes = useStyles();
+
+  const [index, productToList] = useState({} as IProduct);
+
   const [seller, setSeller] = useState({} as ISeller);
   useEffect(() => {
     apiSellerOnly(props.product.seller.id)
@@ -24,7 +27,8 @@ export default function Product(props: { product: IProduct }) {
           setSeller(res.seller);
         }
       });
-  });
+  }, [props.product.seller.id]);
+
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -34,7 +38,7 @@ export default function Product(props: { product: IProduct }) {
           title='Contemplative Reptile'
         />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='h2'>
+          <Typography className={classes.notOverflow}>
             {props.product.title}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
@@ -51,8 +55,14 @@ export default function Product(props: { product: IProduct }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size='large' color='primary'>
-          Añadir a mi lista de regalos
+        <Button
+          size='large'
+          color='primary'
+          onKeyPress={event => {
+            productToList(index);
+          }}
+        >
+          Add to my list
         </Button>
       </CardActions>
     </Card>

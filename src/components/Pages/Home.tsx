@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-import MyList from '../MyList/MyList';
+import ProductList from '../ProductList/ProductList';
 
 export default function Home() {
   return (
     <div>
       <SearchBar />
-      <MyList />
+      <ProductList />
     </div>
   );
 }
