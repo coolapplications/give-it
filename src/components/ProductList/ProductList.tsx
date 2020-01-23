@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from '../Product/Product';
-import { RootState } from '../../redux/store';
+import { RootState } from '../../store';
 import { useSelector } from 'react-redux';
 import { useStyles } from './ProductList.styles';
 
@@ -16,7 +16,7 @@ export default function ProductList() {
       <Product key={index} product={item} />
     ));
   } else {
-    productsFromAPI = <div>No has buscado productos</div>;
+    productsFromAPI = <div>You add no products</div>;
   }
   return <div className={classes.container}>{productsFromAPI}</div>;
 }

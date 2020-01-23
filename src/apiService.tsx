@@ -1,11 +1,11 @@
-import { url } from './react-app-env.d';
+import { url } from "./react-app-env.d";
 import {
   fetchResultsSuccess,
   fetchResultsError,
   fetchResultsPending
-} from './redux/actions/findResults';
-import { Dispatch } from 'redux';
-import IProduct from './models/ProductModel';
+} from "./actions/findResults";
+import { Dispatch } from "redux";
+import IProduct from "./models/ProductModel";
 
 export function apiRequest(text: string) {
   return (dispatch: Dispatch) => {

@@ -1,4 +1,4 @@
-import ISeller from './SellerModel';
+import ISeller from "./SellerModel";
 
 export default interface IProduct {
   thumbnail: string;
@@ -6,4 +6,5 @@ export default interface IProduct {
   vendor: string;
   price: number;
   seller: ISeller;
+  id: string;
 }

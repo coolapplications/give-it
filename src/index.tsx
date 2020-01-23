@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import Mylist from './components/Pages/MyList';
+import MyGifts from './components/Pages/MyGifts';
 import Home from './components/Pages/Home';
-import store from './redux/store';
+import store from './store';
 import { Provider } from 'react-redux';
 
 const Root = (
@@ -11,7 +11,7 @@ const Root = (
     <BrowserRouter>
       <Switch>
         <Route path='/home' component={Home} />
-        <Route path='/MyList' component={Mylist} />
+        <Route path='/gifts' component={MyGifts} />
         <Redirect from='/' to='/home' />
       </Switch>
     </BrowserRouter>

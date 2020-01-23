@@ -18,7 +18,7 @@ function SearchBar() {
     <div className={classes.root}>
       <AppBar position='static' color='secondary'>
         <Toolbar className={classes.toolbar}>
-          <Button href='http://localhost:3000/MyList'>My List</Button>
+          <Button href='http://localhost:3000/gifts'>My List</Button>
 
           <Typography className={classes.title}>
             Give-it App: Make and share your gift list
