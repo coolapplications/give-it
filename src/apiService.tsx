@@ -3,7 +3,7 @@ import {
   fetchResultsSuccess,
   fetchResultsError,
   fetchResultsPending
-} from "./actions/findResults";
+} from "./actions/findResultsAction";
 import { Dispatch } from "redux";
 import IProduct from "./models/ProductModel";
 

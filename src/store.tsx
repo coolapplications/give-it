@@ -1,8 +1,8 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import reducerResults from './reducers/results';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { myProductListReducer } from './reducers/myProductList';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import reducerResults from "./reducers/searchResultsReducer";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { myProductListReducer } from "./reducers/myProductListReducer";
 
 const reducer = combineReducers({
   reducerResults,

@@ -1,8 +1,8 @@
-import React from 'react';
-import Product from '../Product/Product';
-import { RootState } from '../../store';
-import { useSelector } from 'react-redux';
-import { useStyles } from './ProductList.styles';
+import React from "react";
+import Product from "../Product/Product";
+import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+import { useStyles } from "./ProductList.styles";
 
 export default function ProductList() {
   const classes = useStyles();
@@ -13,7 +13,7 @@ export default function ProductList() {
   let productsFromAPI: JSX.Element[] | JSX.Element;
   if (products && products.length > 0) {
     productsFromAPI = products.map((item, index) => (
-      <Product key={index} product={item} />
+      <Product key={index} product={item} addOrRemove="Add to your gift list" />
     ));
   } else {
     productsFromAPI = <div>You add no products</div>;

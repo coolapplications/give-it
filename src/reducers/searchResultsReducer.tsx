@@ -1,10 +1,8 @@
+import IProduct from "../models/ProductModel";
 import {
-  FETCH_RESULTS_SUCCESS,
-  FETCH_RESULTS_PENDING,
-  FETCH_RESULTS_ERROR,
-  fetchResultsActionTypes
-} from '../types/findResultsTypes';
-import IProduct from '../models/ProductModel';
+  fetchResultsActionTypes,
+  myFindResultsActionTypes
+} from "../actions/findResultsAction";
 
 interface IResults {
   pending: boolean;
@@ -23,16 +21,16 @@ function reducerResults(
   action: fetchResultsActionTypes
 ): IResults {
   switch (action.type) {
-    case FETCH_RESULTS_PENDING: {
+    case myFindResultsActionTypes.fetchResultsPending: {
       return { ...state, pending: true };
     }
 
-    case FETCH_RESULTS_SUCCESS: {
-      return { ...state, pending: false, result: action.results };
+    case myFindResultsActionTypes.fetchResultsSuccess: {
+      return { ...state, pending: false, result: action.payload };
     }
 
-    case FETCH_RESULTS_ERROR: {
-      return { ...state, pending: false, error: action.error };
+    case myFindResultsActionTypes.fetchResultsError: {
+      return { ...state, pending: false, error: action.payload };
     }
 
     default:
