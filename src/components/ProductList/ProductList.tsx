@@ -1,10 +1,10 @@
-import React from 'react';
-import Product from '../Product/Product';
-import { RootState } from '../../store';
-import { useSelector, useDispatch } from 'react-redux';
-import { useStyles } from './ProductList.styles';
-import { AddToMyList } from '../../actions/myListAction';
-import IProduct from '../../models/ProductModel';
+import React from "react";
+import Product from "../Product/Product";
+import { RootState } from "../../store";
+import { useSelector, useDispatch } from "react-redux";
+import { useStyles } from "./ProductList.styles";
+import { AddToMyList } from "../../actions/myListAction";
+import IProduct from "../../models/ProductModel";
 
 export default function ProductList() {
   const classes = useStyles();
@@ -23,7 +23,7 @@ export default function ProductList() {
       <Product
         key={index}
         product={item}
-        addOrRemove='Add to your gift list'
+        addOrRemove="Add to your gift list"
         actionFunction={addItem}
       />
     ));

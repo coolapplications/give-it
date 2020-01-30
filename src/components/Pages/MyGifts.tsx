@@ -5,7 +5,7 @@ import SearchBar from "../SearchBar/SearchBar";
 export default function List() {
   return (
     <div>
-      <SearchBar />
+      <SearchBar counter={0} />
       <MyList />
     </div>
   );
