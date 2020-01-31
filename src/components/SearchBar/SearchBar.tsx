@@ -12,12 +12,11 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import RedeemIcon from "@material-ui/icons/Redeem";
-
 import Badge from "@material-ui/core/Badge";
+import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 
 function SearchBar(props: { counter: number }) {
   const [newText, onChangeText] = useState("");
-
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -36,7 +35,10 @@ function SearchBar(props: { counter: number }) {
             My gifts
           </Button>
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
+            <IconButton component={Link} to="/home" color="inherit">
+              <AccountBalanceIcon />
+            </IconButton>
+            <IconButton color="inherit">
               <Badge badgeContent={props.counter}>
                 <RedeemIcon />
               </Badge>

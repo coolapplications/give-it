@@ -28,7 +28,7 @@ export default function ProductList() {
       />
     ));
   } else {
-    productsFromAPI = <div>You add no products</div>;
+    productsFromAPI = <div>Search products you wish</div>;
   }
   return <div className={classes.container}>{productsFromAPI}</div>;
 }
