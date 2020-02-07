@@ -10,13 +10,24 @@ export const useStyles = makeStyles((theme: Theme) =>
     root: {
       justifyItems: "center"
     },
-    toolbar: { display: "flex", flexDirection: "row" },
-    title: { padding: "0 20px", color: "white" },
+    button: {
+      textAlign: "center",
+      color: "white",
+      display: "flex",
+      margin: "auto",
+      fontFamily: "fantasy,",
+      fontSize: "larger"
+    },
+    toolbar: {
+      display: "flex",
+      flexDirection: "row",
+      margin: "initial"
+    },
+    title: { padding: "0 20px", color: "black" },
     sectionDesktop: {
-      display: "none",
-      [theme.breakpoints.up("md")]: {
-        display: "flex"
-      }
+      display: "flex",
+      margin: "auto",
+      [theme.breakpoints.up("md")]: {}
     },
 
     search: {
@@ -26,12 +37,13 @@ export const useStyles = makeStyles((theme: Theme) =>
       "&:hover": {
         backgroundColor: fade(theme.palette.common.white, 0.25)
       },
-      marginLeft: 0,
+
       width: "100%",
       [theme.breakpoints.up("sm")]: {
         marginLeft: theme.spacing(1),
         width: "auto"
-      }
+      },
+      margin: "auto"
     },
     searchIcon: {
       width: theme.spacing(7),

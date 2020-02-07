@@ -7,4 +7,5 @@ export default interface IProduct {
   price: number;
   seller: ISeller;
   id: string;
+  permalink: string;
 }
