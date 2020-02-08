@@ -14,6 +14,7 @@ import RedeemIcon from "@material-ui/icons/Redeem";
 import Badge from "@material-ui/core/Badge";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import { RootState } from "../../store";
+import Login from "../Login/Login";
 
 function SearchBar() {
   const [newText, onChangeText] = useState("");
@@ -71,6 +72,7 @@ function SearchBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
+          <Login />
         </Toolbar>
       </AppBar>
     </div>
