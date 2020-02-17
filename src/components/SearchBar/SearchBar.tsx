@@ -32,7 +32,7 @@ function SearchBar() {
             <IconButton component={Link} to="/home" color="inherit">
               <AccountBalanceIcon />
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton component={Link} to="/gifts" color="inherit">
               <Badge badgeContent={counter} showZero={true}>
                 <RedeemIcon />
               </Badge>
