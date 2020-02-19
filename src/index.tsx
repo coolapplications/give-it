@@ -9,6 +9,7 @@ import history from "./history";
 import { Auth0Provider } from "./react-auth0-spa";
 import config from "./auth_config.json";
 import LoginRedirect from "./components/LoginRedirect/LoginRedirect";
+import "bootstrap/dist/css/bootstrap.css";
 
 // A function that routes the user to the right place
 // after login
@@ -33,7 +34,6 @@ const Root = (
       <BrowserRouter>
         <Switch>
           <Route path="/home" component={Home} />
-          <Route path="/!#" component={Home} />
           <Route path="/gifts" component={MyGifts} />
           <Route path="/login" component={LoginRedirect} />
           <Route exact path="/" component={Home} />

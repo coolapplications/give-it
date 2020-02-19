@@ -43,10 +43,9 @@ export default function ProductList() {
   return (
     <div>
       <div>
-        {" "}
         <Paginator
           postsPerPage={postsPerPage}
-          totalPosts={products?.length}
+          totalPosts={products ? products.length : 0}
           paginate={paginate}
         />
       </div>
