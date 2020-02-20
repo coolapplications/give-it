@@ -1,26 +1,20 @@
-import React from "react";
+import React from 'react';
+import { range } from 'lodash';
 
-const Paginator = (props: {
-  postsPerPage: number;
-  totalPosts: number;
-  paginate: any;
-}) => {
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(props.totalPosts / props.postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+const Paginator = (props: { totalProducts: number; paginate: any }) => {
+  const pageNumbers = range(1, props.totalProducts / 10);
+
   return (
     <div>
-      <ul className="pagination">
+      <ul className='pagination'>
         {pageNumbers.map(number => (
-          <li key={number} className="page-item">
-            <a
-              className={"page-link"}
+          <li key={number} className='page-item'>
+            <button
+              className={'page-link'}
               onClick={() => props.paginate(number)}
-              href="/#"
             >
               {number}
-            </a>
+            </button>
           </li>
         ))}
       </ul>

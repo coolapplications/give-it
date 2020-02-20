@@ -1,24 +1,31 @@
-import IProduct from "../models/ProductModel";
+import IProduct from '../models/ProductModel';
+import { Action } from 'redux';
 
 export enum myFindResultsActionTypes {
-  fetchResultsPending = "fetchResultsPending",
-  fetchResultsSuccess = "fetchResultsSuccess",
-  fetchResultsError = "fetchResultsError"
+  fetchResultsPending = 'fetchResultsPending',
+  fetchResultsSuccess = 'fetchResultsSuccess',
+  fetchResultsError = 'fetchResultsError',
+  totalProductsChange = 'totalProductsChange'
 }
 
-interface fetchResultsPendingAction {
-  type: myFindResultsActionTypes.fetchResultsPending;
+interface GenericAction<T, P = any> extends Action<T> {
+  payload: P;
 }
+type fetchResultsPendingAction = Action<
+  myFindResultsActionTypes.fetchResultsPending
+>;
+type fetchResultsSuccessAction = GenericAction<
+  myFindResultsActionTypes.fetchResultsSuccess,
+  IProduct[]
+>;
+type fetchResultsErrorAction = GenericAction<
+  myFindResultsActionTypes.fetchResultsError
+>;
 
-interface fetchResultsSuccessAction {
-  type: myFindResultsActionTypes.fetchResultsSuccess;
-  payload: IProduct[];
-}
-
-interface fetchResultsErrorAction {
-  type: myFindResultsActionTypes.fetchResultsError;
-  payload: any;
-}
+type totalProductsChange = GenericAction<
+  myFindResultsActionTypes.totalProductsChange,
+  number
+>;
 export function fetchResultsPending(): fetchResultsPendingAction {
   return {
     type: myFindResultsActionTypes.fetchResultsPending
@@ -40,7 +47,14 @@ export function fetchResultsError(payload: any): fetchResultsErrorAction {
     payload
   };
 }
+export function totalProductsChange(payload: number): totalProductsChange {
+  return {
+    type: myFindResultsActionTypes.totalProductsChange,
+    payload
+  };
+}
 export type fetchResultsActionTypes =
   | fetchResultsPendingAction
   | fetchResultsSuccessAction
-  | fetchResultsErrorAction;
+  | fetchResultsErrorAction
+  | totalProductsChange;

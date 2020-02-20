@@ -1,15 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import MyGifts from "./components/Pages/MyGifts";
-import Home from "./components/Pages/Home";
-import store from "./store";
-import { Provider } from "react-redux";
-import history from "./history";
-import { Auth0Provider } from "./react-auth0-spa";
-import config from "./auth_config.json";
-import LoginRedirect from "./components/LoginRedirect/LoginRedirect";
-import "bootstrap/dist/css/bootstrap.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import MyGifts from './components/Pages/MyGifts';
+import Home from './components/Pages/Home';
+import store from './store';
+import { Provider } from 'react-redux';
+import history from './history';
+import { Auth0Provider } from './react-auth0-spa';
+import config from './auth_config.json';
+import LoginRedirect from './components/LoginRedirect/LoginRedirect';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // A function that routes the user to the right place
 // after login
@@ -33,14 +33,16 @@ const Root = (
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route path="/home" component={Home} />
-          <Route path="/gifts" component={MyGifts} />
-          <Route path="/login" component={LoginRedirect} />
-          <Route exact path="/" component={Home} />
+          <Route path='/home' component={Home} />
+          <Route path='/gifts' component={MyGifts} />
+          <Route path='/login' component={LoginRedirect} />
+          <Route exact path='/'>
+            <Redirect to='/home' />
+          </Route>
         </Switch>
       </BrowserRouter>
     </Provider>
   </Auth0Provider>
 );
 
-ReactDOM.render(Root, document.getElementById("root"));
+ReactDOM.render(Root, document.getElementById('root'));

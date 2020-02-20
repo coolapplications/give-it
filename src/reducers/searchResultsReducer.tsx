@@ -1,19 +1,21 @@
-import IProduct from "../models/ProductModel";
+import IProduct from '../models/ProductModel';
 import {
   fetchResultsActionTypes,
   myFindResultsActionTypes
-} from "../actions/findResultsAction";
+} from '../actions/findResultsAction';
 
 interface IResults {
   pending: boolean;
   result?: IProduct[] | null;
   error?: any;
+  totalProducts: number;
 }
 
 const defaultState: IResults = {
   pending: false,
   result: null,
-  error: null
+  error: null,
+  totalProducts: 1
 };
 
 function reducerResults(
@@ -31,6 +33,9 @@ function reducerResults(
 
     case myFindResultsActionTypes.fetchResultsError: {
       return { ...state, pending: false, error: action.payload };
+    }
+    case myFindResultsActionTypes.totalProductsChange: {
+      return { ...state, totalProducts: action.payload };
     }
 
     default:
