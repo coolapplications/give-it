@@ -5,7 +5,8 @@ export enum myFindResultsActionTypes {
   fetchResultsPending = 'fetchResultsPending',
   fetchResultsSuccess = 'fetchResultsSuccess',
   fetchResultsError = 'fetchResultsError',
-  totalProductsChange = 'totalProductsChange'
+  totalProductsChange = 'totalProductsChange',
+  pageChange = 'pageChange',
 }
 
 interface GenericAction<T, P = any> extends Action<T> {
@@ -26,9 +27,11 @@ type totalProductsChange = GenericAction<
   myFindResultsActionTypes.totalProductsChange,
   number
 >;
+
+type pageChange = GenericAction<myFindResultsActionTypes.pageChange, number>;
 export function fetchResultsPending(): fetchResultsPendingAction {
   return {
-    type: myFindResultsActionTypes.fetchResultsPending
+    type: myFindResultsActionTypes.fetchResultsPending,
   };
 }
 
@@ -37,24 +40,32 @@ export function fetchResultsSuccess(
 ): fetchResultsSuccessAction {
   return {
     type: myFindResultsActionTypes.fetchResultsSuccess,
-    payload
+    payload,
   };
 }
 
 export function fetchResultsError(payload: any): fetchResultsErrorAction {
   return {
     type: myFindResultsActionTypes.fetchResultsError,
-    payload
+    payload,
   };
 }
 export function totalProductsChange(payload: number): totalProductsChange {
   return {
     type: myFindResultsActionTypes.totalProductsChange,
-    payload
+    payload,
+  };
+}
+
+export function pageChange(payload: number): pageChange {
+  return {
+    type: myFindResultsActionTypes.pageChange,
+    payload,
   };
 }
 export type fetchResultsActionTypes =
   | fetchResultsPendingAction
   | fetchResultsSuccessAction
   | fetchResultsErrorAction
-  | totalProductsChange;
+  | totalProductsChange
+  | pageChange;

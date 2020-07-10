@@ -1,7 +1,7 @@
 import IProduct from '../models/ProductModel';
 import {
   fetchResultsActionTypes,
-  myFindResultsActionTypes
+  myFindResultsActionTypes,
 } from '../actions/findResultsAction';
 
 interface IResults {
@@ -9,13 +9,17 @@ interface IResults {
   result?: IProduct[] | null;
   error?: any;
   totalProducts: number;
+  searchTerm: string;
+  page: number;
 }
 
 const defaultState: IResults = {
   pending: false,
   result: null,
   error: null,
-  totalProducts: 1
+  totalProducts: 1,
+  searchTerm: '',
+  page: 1,
 };
 
 function reducerResults(
@@ -36,6 +40,10 @@ function reducerResults(
     }
     case myFindResultsActionTypes.totalProductsChange: {
       return { ...state, totalProducts: action.payload };
+    }
+
+    case myFindResultsActionTypes.pageChange: {
+      return { ...state, page: action.payload };
     }
 
     default:
