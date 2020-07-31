@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.10.0",
     "@material-ui/core": "^4.8.2",
     "@material-ui/icons": "^4.5.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -73,6 +72,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/coolapplications/give-it/issues"
-  },
-  "homepage": "https://github.com/coolapplications/give-it#readme"
+  }
 }
