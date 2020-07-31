@@ -72,5 +72,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/coolapplications/give-it/issues"
+  },
+  "engines": {
+    "node": "12.14.0"
   }
 }
