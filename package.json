@@ -74,6 +74,7 @@
     "url": "https://github.com/coolapplications/give-it/issues"
   },
   "engines": {
-    "node": "12.14.0"
+    "node": "12.14.0",
+    "npm": "6.13.4"
   }
 }
