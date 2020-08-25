@@ -54,24 +54,23 @@ function SearchBar() {
             </div>
             <InputBase
               placeholder='Search…'
-              onChange={event => {
+              onChange={(event) => {
                 const newText = event.target.value;
                 onChangeText(newText);
                 dispatch(apiRequest(newText));
               }}
-              onKeyPress={event => {
+              onKeyPress={(event) => {
                 if (event.key === 'Enter' && newText) {
                   dispatch(apiRequest(newText));
                   history.push('/home');
                 }
               }}
               classes={{
-                input: classes.inputInput
+                input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          <Login />
         </Toolbar>
       </AppBar>
     </div>
